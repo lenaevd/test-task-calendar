@@ -49,10 +49,10 @@ public class GlobalExceptionHandler {
         return build(HttpStatus.BAD_REQUEST, message);
     }
 
-//    @ExceptionHandler(Exception.class)
-//    public ResponseEntity<ErrorResponse> handleAny(Exception ex) {
-//        return build(HttpStatus.INTERNAL_SERVER_ERROR, "Внутренняя ошибка сервера");
-//    }
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> handleAny(Exception ex) {
+        return build(HttpStatus.INTERNAL_SERVER_ERROR, "Внутренняя ошибка сервера");
+    }
 
     private ResponseEntity<ErrorResponse> build(HttpStatus status, String message) {
         ErrorResponse body = new ErrorResponse(Instant.now(), status.value(), status.getReasonPhrase(), message);

@@ -19,13 +19,14 @@ class CalendarRendererTest {
 
         String result = renderer.renderMonth(2024, january);
         String expected =
-                  "ЯНВАРЬ          2024\n"
-                + "ПН ВТ СР ЧТ ПТ СБ ВС\n"
-                + " 1  2  3  4  5  6  7\n"
-                + " 8  9 10 11 12 13 14\n"
-                + "15 16 17 18 19 20 21\n"
-                + "22 23 24 25 26 27 28\n"
-                + "29 30 31";
+                """
+                        ЯНВАРЬ          2024
+                        ПН ВТ СР ЧТ ПТ СБ ВС
+                         1  2  3  4  5  6  7
+                         8  9 10 11 12 13 14
+                        15 16 17 18 19 20 21
+                        22 23 24 25 26 27 28
+                        29 30 31""";
 
         assertThat(result).isEqualTo(expected);
     }
@@ -35,14 +36,15 @@ class CalendarRendererTest {
         MonthEntity september = new MonthEntity(null, 9, 30, DayOfWeek.SUNDAY);
 
         String result = renderer.renderMonth(2024, september);
-        String expected = "СЕНТЯБРЬ        2024\n"
-                + "ПН ВТ СР ЧТ ПТ СБ ВС\n"
-                + "                   1\n"
-                + " 2  3  4  5  6  7  8\n"
-                + " 9 10 11 12 13 14 15\n"
-                + "16 17 18 19 20 21 22\n"
-                + "23 24 25 26 27 28 29\n"
-                + "30";
+        String expected = """
+                СЕНТЯБРЬ        2024
+                ПН ВТ СР ЧТ ПТ СБ ВС
+                                   1
+                 2  3  4  5  6  7  8
+                 9 10 11 12 13 14 15
+                16 17 18 19 20 21 22
+                23 24 25 26 27 28 29
+                30""";
 
         assertThat(result).isEqualTo(expected);
     }
