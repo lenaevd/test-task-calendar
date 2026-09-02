@@ -35,7 +35,7 @@ public class CalendarController {
 
     private static final int MIN_YEAR = 1600;
     private static final int MAX_YEAR = Year.MAX_VALUE;
-    private static final int MAX_YEAR_DIAPASON = 10000000;
+    private static final int MAX_YEAR_RANGE = 10000000;
 
     private static final int MIN_MONTH_NUMBER = 1;
     private static final int MAX_MONTH_NUMBER = 12;
@@ -111,9 +111,9 @@ public class CalendarController {
             @Parameter(description = "Год, для которого ищем аналогичные", example = "2026")
             @PathVariable @Min(MIN_YEAR) @Max(MAX_YEAR) int year,
             @Parameter(description = "Начало диапазона поиска", example = "2020")
-            @RequestParam @Min(MIN_YEAR) @Max(MAX_YEAR_DIAPASON) int from,
+            @RequestParam @Min(MIN_YEAR) @Max(MAX_YEAR_RANGE) int from,
             @Parameter(description = "Конец диапазона поиска", example = "2040")
-            @RequestParam @Min(MIN_YEAR) @Max(MAX_YEAR_DIAPASON) int to) {
+            @RequestParam @Min(MIN_YEAR) @Max(MAX_YEAR_RANGE) int to) {
         List<Integer> list = calendarService.getYearsWithSameTemplate(year, from, to);
         return ResponseEntity.ok(new SameTemplateYearsResponse(from, to, list));
     }

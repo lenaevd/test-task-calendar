@@ -81,19 +81,6 @@ public class CalendarServiceImpl implements CalendarService {
                 .toList();
     }
 
-//    private Map<CalendarKey, List<Integer>> groupYearsByTemplate(int fromYear, int toYear) {
-//        if (fromYear > toYear) {
-//            int y = toYear;
-//            toYear = fromYear;
-//            fromYear = y;
-//        }
-//        Map<CalendarKey, List<Integer>> groups = new LinkedHashMap<>();
-//        for (int year = fromYear; year <= toYear; year++) {
-//            groups.computeIfAbsent(CalendarKey.of(year), k -> new ArrayList<>()).add(year);
-//        }
-//        return groups;
-//    }
-
     private CalendarTemplateEntity buildTemplate(int year, CalendarKey key) {
         CalendarTemplateEntity template = new CalendarTemplateEntity(key.firstDayOfWeek(), key.isLeap());
         List<MonthEntity> months = new ArrayList<>(12);
