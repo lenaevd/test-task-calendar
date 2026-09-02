@@ -1,0 +1,9 @@
+services:
+  calendarDB:
+    image: "postgres"
+    environment:
+      POSTGRES_DB: calendar
+      POSTGRES_USER: calendar_user
+      POSTGRES_PASSWORD: calendar_pass
+    ports:
+      - "5432:5432"
