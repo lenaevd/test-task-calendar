@@ -8,13 +8,11 @@ import com.lenaevd.calendar.dto.NextSameTemplateResponse;
 import com.lenaevd.calendar.dto.SameTemplateYearsResponse;
 import com.lenaevd.calendar.mapper.CalendarMapper;
 import com.lenaevd.calendar.service.CalendarService;
-import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -116,20 +114,5 @@ public class CalendarController {
             @RequestParam @Min(MIN_YEAR) @Max(MAX_YEAR_RANGE) int to) {
         List<Integer> list = calendarService.getYearsWithSameTemplate(year, from, to);
         return ResponseEntity.ok(new SameTemplateYearsResponse(from, to, list));
-    }
-
-    @Hidden
-    @GetMapping(value = "/{year}/tt", produces = MediaType.TEXT_PLAIN_VALUE)
-    public String getRenderedYear(
-            @PathVariable @Min(MIN_YEAR) @Max(MAX_YEAR) int year) {
-        return calendarService.getRenderedCalendar(year);
-    }
-
-    @Hidden
-    @GetMapping(path = "/{year}/months/{number}/tt", produces = MediaType.TEXT_PLAIN_VALUE)
-    public String getMonthTextPlain(
-            @PathVariable @Min(MIN_YEAR) @Max(MAX_YEAR) int year,
-            @PathVariable @Min(MIN_MONTH_NUMBER) @Max(MAX_MONTH_NUMBER) int number) {
-        return calendarService.getRenderedMonth(year, number);
     }
 }
